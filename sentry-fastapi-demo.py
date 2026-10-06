@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 sentry_sdk.init(
-    dsn=os.getenv("SENTRY_DSN"),
+    dsn=os.getenv("dsn"),
     environment="development",
 )
 
