@@ -21,5 +21,9 @@ def home():
 
 @app.get("/error")
 def trigger_error():
-    result = 10 / 0
+    try:
+        result = 10 / 0
+    except ZeroDivisionError:
+        sentry_sdk.capture_message("Division by zero attempted", level="warning")
+        return {"error": "Division by zero is not allowed"}
     return {"result": result}
